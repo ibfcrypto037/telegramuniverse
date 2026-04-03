@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Native Ads Revenue Calculator - Estimate Your Earnings</title>
+    <meta name="description"
+        content="Calculate your Telegram channel revenue from native ads. Get estimated min, avg and max monthly earnings based on your views and audience country.">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="logo.png" alt="TelegramUniverse Logo" class="nav-logo">
+                <span class="nav-brand-text">TelegramUniverse</span>
+            </a>
+            <button class="hamburger" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="revenue.html" class="active">Revenue</a>
+                <a href="cpm.html">CPM</a>
+                <a href="engagement.html">Engagement</a>
+                <a href="growth.html">Growth</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="mb-5">
+            <a href="index.html" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">&larr;
+                Back to Home</a>
+        </div>
+
+        <div class="tool-layout">
+            <!-- Calculator Setup -->
+            <div class="glass-card">
+                <div class="flex items-center justify-between mb-4">
+                    <h2>Revenue Calculator</h2>
+                    <button id="btn-reset-revenue" class="btn btn-secondary"
+                        style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Reset</button>
+                </div>
+
+                <form id="revenue-form">
+                    <div class="form-group">
+                        <label class="form-label">How do you want to enter views?</label>
+                        <div class="toggle-wrapper" data-target="revViews">
+                            <button type="button" class="toggle-btn active" data-val="manual">Manual Input</button>
+                            <button type="button" class="toggle-btn" data-val="auto">Auto Calculate</button>
+                        </div>
+                    </div>
+
+                    <div id="revViews-manual-fields" class="fade-in-section is-visible">
+                        <div class="form-group">
+                            <label class="form-label">Monthly Views <span class="tooltip-icon"
+                                    data-tooltip="Total number of views your channel receives per month.">?</span></label>
+                            <input type="number" id="inp-monthly-views" class="form-control calc-input" min="1"
+                                placeholder="e.g. 500000" value="500000">
+                        </div>
+                    </div>
+
+                    <div id="revViews-auto-fields" class="hidden fade-in-section is-visible">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Average Views Per Post <span class="tooltip-icon"
+                                        data-tooltip="Average views each of your posts receives.">?</span></label>
+                                <input type="number" id="inp-views-per-post" class="calc-input form-control" min="0" placeholder="e.g. 10000" value="">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Posts Per Day <span class="tooltip-icon"
+                                        data-tooltip="How many posts you publish daily on average.">?</span></label>
+                                <input type="number" id="inp-posts-per-day" class="calc-input form-control" min="0" placeholder="e.g. 3" value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Audience Country Tier <span class="tooltip-icon"
+                                data-tooltip="Tier 1: USA, UK, Canada, AU. Tier 2: Europe, LATAM, ME. Tier 3: India, SEA, Africa.">?</span></label>
+                        <select id="sel-tier" class="form-control calc-input">
+                            <option value="tier1" selected>Tier 1 — USA, UK, Canada, Australia, EU</option>
+                            <option value="tier2">Tier 2 — India, Brazil, Russia, Turkey</option>
+                            <option value="tier3">Tier 3 — Other Countries</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Number of Days <span class="tooltip-icon"
+                                data-tooltip="Number of days to estimate revenue for.">?</span></label>
+                        <input type="number" id="inp-days" class="calc-input form-control" min="1"
+                            placeholder="e.g. 30" value="30">
+                    </div>
+
+                    <div id="rev-warning" class="hidden" style="background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.4); border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.85rem; color: #ef4444; margin-top: 0.5rem;">
+                        <span id="rev-warning-text"></span>
+                    </div>
+                    
+                    <button id="btn-calc-revenue" class="btn btn-primary btn-block btn-calc" style="padding: 1rem; font-size: 1.1rem; margin-top: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px var(--accent-shadow);">Calculate Revenue</button>
+                </form>
+            </div>
+
+            <!-- Results Panel -->
+            <div id="result-section" class="glass-card results-card fade-in-section hidden">
+                <h3>Revenue Estimate</h3>
+
+                <div class="result-item" style="margin-bottom: 1.5rem;">
+                    <div class="result-label">📊 Calculated Monthly Views <span class="tooltip-icon"
+                            data-tooltip="Based on your average views per post and posts per day over 30 days.">?</span></div>
+                    <div class="result-value" id="res-calc-monthly-views" style="font-size: 1.25rem;">0</div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-bottom: 0.5rem;">
+                    <div class="result-item" style="flex:1;">
+                        <div class="result-label">💰 Full CPM (Avg)</div>
+                        <div class="result-value" id="res-full-cpm" style="font-size: 1.25rem;">$0.00</div>
+                    </div>
+                    <div class="result-item" style="flex:1;">
+                        <div class="result-label">Your CPM (After 50%)</div>
+                        <div class="result-value" id="res-avg-cpm" style="font-size: 1.25rem;">$0.00</div>
+                    </div>
+                </div>
+
+                <div class="result-divider"></div>
+
+                <div class="result-item">
+                    <div class="result-label" id="lbl-period-avg">💰 Revenue for 30 Days (Avg)</div>
+                    <div class="result-value large" id="res-period-avg" style="color: var(--accent-gradient-hover);">$0</div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-bottom: 0.5rem;">
+                    <div class="result-item" style="flex:1;">
+                        <div class="result-label" id="lbl-period-min">Min for 30 Days</div>
+                        <div class="result-value" id="res-period-min" style="font-size: 1.25rem;">$0</div>
+                    </div>
+                    <div class="result-item" style="flex:1;">
+                        <div class="result-label" id="lbl-period-max">Max for 30 Days</div>
+                        <div class="result-value" id="res-period-max" style="font-size: 1.25rem;">$0</div>
+                    </div>
+                </div>
+
+                <div class="result-divider"></div>
+
+                <div class="result-item">
+                    <div class="result-label">💰 Monthly Revenue (Avg)</div>
+                    <div class="result-value large" id="res-avg-rev" style="font-size: 2rem;">$0</div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-bottom: 0.5rem;">
+                    <div class="result-item" style="flex:1;">
+                        <div class="result-label">Monthly Min</div>
+                        <div class="result-value" id="res-min-rev" style="font-size: 1.25rem;">$0</div>
+                    </div>
+                    <div class="result-item" style="flex:1;">
+                        <div class="result-label">Monthly Max</div>
+                        <div class="result-value" id="res-max-rev" style="font-size: 1.25rem;">$0</div>
+                    </div>
+                </div>
+
+                <div class="result-divider"></div>
+
+                <div class="result-item" style="margin-bottom: 1.5rem;">
+                    <div class="result-label">📈 Annual Revenue (Avg)</div>
+                    <div class="result-value" id="res-annual-rev" style="font-size: 1.5rem;">$0</div>
+                </div>
+
+                <p style="font-size: 0.85rem; opacity: 0.7; margin: 0; text-align: center;">
+                    Based on real Telegram Ads CPM data. Telegram keeps 50% revenue share.
+                </p>
+            </div>
+        </div>
+
+        <section class="seo-section fade-in-section">
+            <h1>Telegram Native Ads Revenue Calculator</h1>
+            <p>Our <strong>Telegram revenue calculator</strong> is the best tool online tailored for channel owners
+                seeking to monetize their audience. It automatically estimates prospective earnings by taking total
+                views and channel tier into account. This tool solves the guesswork
+                regarding potential ad and sponsorship layouts.</p>
+
+            <h2>How to use the Telegram ad revenue estimator</h2>
+            <p>Enter your monthly views, subscriber count, and select your audience's country tier. The calculator
+                applies real Telegram Ads CPM data, accounts for Telegram's 50% revenue share, and gives you
+                conservative, average, and optimistic monthly revenue estimates — plus an annual projection.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer mt-4">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="revenue.html">Revenue</a>
+            <a href="cpm.html">CPM</a>
+            <a href="engagement.html">Engagement</a>
+            <a href="growth.html">Growth</a>
+        </div>
+        <p class="footer-tagline" style="color: var(--text-primary); font-weight: 500; margin-bottom: 1rem;">
+            Professional tools to analyze and monetize your Telegram channel.
+        </p>
+        <p class="footer-disclaimer">
+            Not affiliated with Telegram FZ-LLC. Earnings are simulated estimates for educational purposes.<br>
+            All data is processed strictly locally in your browser.
+        </p>
+        <p class="footer-copyright mt-4" style="font-size: 0.85rem; color: var(--text-secondary);">
+            &copy; 2026 Telegram Universe. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

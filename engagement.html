@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Engagement Rate Calculator | Analyze Activity</title>
+    <meta name="description" content="Calculate your Telegram engagement rate instantly. Check how active your audience is by comparing total interactions to total views.">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="logo.png" alt="TelegramUniverse Logo" class="nav-logo">
+                <span class="nav-brand-text">TelegramUniverse</span>
+            </a>
+            <button class="hamburger" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="revenue.html">Revenue</a>
+                <a href="cpm.html">CPM</a>
+                <a href="engagement.html" class="active">Engagement</a>
+                <a href="growth.html">Growth</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="mb-5">
+            <a href="index.html" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">&larr; Back to Home</a>
+        </div>
+
+        <div class="tool-layout">
+            <div class="glass-card">
+                <div class="flex items-center justify-between mb-4">
+                    <h2>Engagement Calculator</h2>
+                    <button id="btn-reset-engagement" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Reset</button>
+                </div>
+                
+                <form id="engagement-form">
+                    <div class="form-group">
+                        <label class="form-label">Total Post Views <span class="tooltip-icon" data-tooltip="The number of views on a specific post or average views over a period.">?</span></label>
+                        <input type="number" id="inp-eng-views" class="form-control calc-input" min="0" placeholder="e.g. 5000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Total Subscribers <span class="tooltip-icon" data-tooltip="The total number of subscribers in your channel.">?</span></label>
+                        <input type="number" id="inp-eng-subscribers" class="form-control calc-input" min="0" placeholder="e.g. 15000">
+                    </div>
+                    
+                    <button id="btn-calc-engagement" class="btn btn-primary btn-block btn-calc" style="padding: 1rem; font-size: 1.1rem; margin-top: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px var(--accent-shadow);">Calculate Engagement</button>
+                </form>
+            </div>
+
+            <div id="result-section" class="glass-card results-card fade-in-section hidden">
+                <h3>Engagement Rate Result</h3>
+                
+                <div class="result-item">
+                    <div class="result-label">📊 Audience Engagement <span class="tooltip-icon" data-tooltip="Percentage of viewers who actively interacted.">?</span></div>
+                    <div class="result-value large" id="res-eng-rate">0.00%</div>
+                </div>
+            </div>
+        </div>
+
+        <section class="seo-section fade-in-section">
+            <h1>Telegram engagement rate calculator</h1>
+            <p>Our <strong>Telegram engagement rate</strong> calculator provides an immediate and precise metric on how actively your subscribers engage with the content you post. Knowing this number is extremely useful for gauging content quality and determining how likely sponsors are to get a return on their investment.</p>
+            
+            <h2>Why is Telegram engagement rate important?</h2>
+            <p>A high engagement rate means your audience isn't just seeing your posts—they are reading, reacting, and sharing them. By regularly calculating this metric, you can fine-tune your messaging, discover what resonates best with your community, and leverage those insights to attract better ad deals.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer mt-4">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="revenue.html">Revenue</a>
+            <a href="cpm.html">CPM</a>
+            <a href="engagement.html">Engagement</a>
+            <a href="growth.html">Growth</a>
+        </div>
+        <p class="footer-tagline" style="color: var(--text-primary); font-weight: 500; margin-bottom: 1rem;">
+            Professional tools to analyze and monetize your Telegram channel.
+        </p>
+        <p class="footer-disclaimer">
+            Not affiliated with Telegram FZ-LLC. Earnings are simulated estimates for educational purposes.<br>
+            All data is processed strictly locally in your browser.
+        </p>
+        <p class="footer-copyright mt-4" style="font-size: 0.85rem; color: var(--text-secondary);">
+            &copy; 2026 Telegram Universe. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

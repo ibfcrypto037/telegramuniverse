@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram CPM Calculator | Understand Ad Value</title>
+    <meta name="description" content="Calculate your Telegram CPM easily. Find out how much advertisers are paying per 1000 views on your channel.">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="logo.png" alt="TelegramUniverse Logo" class="nav-logo">
+                <span class="nav-brand-text">TelegramUniverse</span>
+            </a>
+            <button class="hamburger" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="revenue.html">Revenue</a>
+                <a href="cpm.html" class="active">CPM</a>
+                <a href="engagement.html">Engagement</a>
+                <a href="growth.html">Growth</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="mb-5">
+            <a href="index.html" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">&larr; Back to Home</a>
+        </div>
+
+        <div class="tool-layout">
+            <div class="glass-card">
+                <div class="flex items-center justify-between mb-4">
+                    <h2>CPM Calculator</h2>
+                    <button id="btn-reset-cpm" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Reset</button>
+                </div>
+                
+                <form id="cpm-form">
+                    <div class="form-group">
+                        <label class="form-label">Total Revenue ($) <span class="tooltip-icon" data-tooltip="Total money generated from an ad placement.">?</span></label>
+                        <input type="number" id="inp-cpm-revenue" class="form-control calc-input" min="0" placeholder="e.g. 50">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Total Views <span class="tooltip-icon" data-tooltip="Total views accumulated on the sponsored post.">?</span></label>
+                        <input type="number" id="inp-cpm-views" class="form-control calc-input" min="0" placeholder="e.g. 10000">
+                    </div>
+                    
+                    <button id="btn-calc-cpm" class="btn btn-primary btn-block btn-calc" style="padding: 1rem; font-size: 1.1rem; margin-top: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px var(--accent-shadow);">Calculate CPM</button>
+                </form>
+            </div>
+
+            <div id="result-section" class="glass-card results-card fade-in-section hidden">
+                <h3>CPM Result</h3>
+                
+                <div class="result-item">
+                    <div class="result-label">💰 Cost Per Mille (CPM) <span class="tooltip-icon" data-tooltip="Amount paid per 1,000 views.">?</span></div>
+                    <div class="result-value large" id="res-cpm-value">$0</div>
+                </div>
+            </div>
+        </div>
+
+        <section class="seo-section fade-in-section">
+            <h1>Telegram CPM calculator</h1>
+            <p>The <strong>Telegram CPM calculator</strong> helps you determine exactly what your community's attention is worth. Cost Per Mille (CPM) denotes the price of 1,000 advertisement impressions. It acts as the standard benchmark metric for the digital marketing industry.</p>
+            
+            <h2>Why you should calculate CPM for your channel</h2>
+            <p>If you're unsure if you are undercharging or overcharging sponsors, finding out your true CPM is the very first step to optimization. Easily punch in your historical sponsorship payments and the amount of views those ads received. Armed with these numbers, you can competitively package your channel for future ad deals.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer mt-4">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="revenue.html">Revenue</a>
+            <a href="cpm.html">CPM</a>
+            <a href="engagement.html">Engagement</a>
+            <a href="growth.html">Growth</a>
+        </div>
+        <p class="footer-tagline" style="color: var(--text-primary); font-weight: 500; margin-bottom: 1rem;">
+            Professional tools to analyze and monetize your Telegram channel.
+        </p>
+        <p class="footer-disclaimer">
+            Not affiliated with Telegram FZ-LLC. Earnings are simulated estimates for educational purposes.<br>
+            All data is processed strictly locally in your browser.
+        </p>
+        <p class="footer-copyright mt-4" style="font-size: 0.85rem; color: var(--text-secondary);">
+            &copy; 2026 Telegram Universe. All rights reserved.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
