@@ -1010,21 +1010,45 @@ select.form-control {
   display: none;
 }
 
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 1.5rem;
+/* Footer links - Desktop */
+footer nav, .footer-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
 }
 
-.footer-links a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.3s ease;
+footer nav a, .footer-links a {
+    color: #000000 !important;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 4px 8px;
+    display: inline-block;
 }
 
-.footer-links a:hover {
-  color: #229ED9;
+footer nav a:hover, .footer-links a:hover {
+    color: #2AABEE !important;
+    text-decoration: underline;
+}
+
+/* Footer links - Mobile */
+@media (max-width: 768px) {
+    footer nav, .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    footer nav a, .footer-links a {
+        color: #000000 !important;
+        font-size: 14px;
+        padding: 4px 0;
+        display: block;
+        text-align: center;
+    }
 }
 
 .footer-disclaimer {
@@ -1039,3 +1063,5 @@ select.form-control {
     height: 30px;
   }
 }
+
+
