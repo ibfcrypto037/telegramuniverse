@@ -1146,3 +1146,37 @@ footer nav a:hover, .footer-links a:hover {
         overflow-wrap: break-word !important;
     }
 }
+
+section, .section, 
+.calculator-section,
+.seo-section, 
+.content-section,
+.blog-section,
+.faq-section {
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+    padding: 32px 24px !important;
+    box-sizing: border-box !important;
+}
+
+.card, .tool-card, 
+.feature-card, .blog-card,
+.calculator-card, .result-card {
+    margin-bottom: 24px !important;
+    padding: 24px !important;
+    box-sizing: border-box !important;
+}
+
+@media (max-width: 768px) {
+    section, .section {
+        margin-top: 24px !important;
+        margin-bottom: 24px !important;
+        padding: 20px 16px !important;
+    }
+
+    section + section {
+        border-top: 1px solid 
+        rgba(0,0,0,0.08) !important;
+        padding-top: 24px !important;
+    }
+}
